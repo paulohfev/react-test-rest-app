@@ -1,0 +1,8 @@
+.post-item {
+  border: 1px solid #D3D3D3;
+  padding: 0 10px;
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+}
