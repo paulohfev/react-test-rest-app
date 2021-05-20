@@ -1,0 +1,16 @@
+.navbar-list {
+  display: flex;
+  padding: 0 40px;
+
+
+  .navbar-list-link {
+    list-style: none;
+    margin-right: 20px;
+    text-decoration: none;
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}

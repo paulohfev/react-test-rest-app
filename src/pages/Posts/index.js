@@ -15,8 +15,6 @@ const Posts = () => {
     fetchPosts();
   },[]);
 
-  console.log(posts)
-
   return (
     <div className={pageStyles['page-container']}>
       <h1>List of Posts</h1>
@@ -24,11 +22,13 @@ const Posts = () => {
       {posts.map(post => {
         return (
           <div className={'post-item'} key={post.id}>
+            <p>{post.id}</p>
             <h3>{post.title}</h3>
             <p>{post.body}</p>
           </div>
         );
-      })}
+      })
+      .reverse()}
     </div>
   )
 }
