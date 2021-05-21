@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import EditPostModal from '../../components/EditPostModal';
 import getPosts from '../../data/posts';
 import pageStyles from '../pages.module.scss';
-import './styles.scss';
+import styles from './posts.module.scss';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editablePostData, setEditablePostData] = useState({});
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -21,14 +24,40 @@ const Posts = () => {
 
       {posts.map(post => {
         return (
-          <div className={'post-item'} key={post.id}>
-            <p>{post.id}</p>
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
+          <div className={styles['post-item']} key={post.id}>
+            <div className={styles['post-item-container']}>
+              <div className={styles['post-item-content']}>
+                <p>{post.id}</p>
+                <h3>{post.title}</h3>
+                <p>{post.body}</p>
+              </div>
+
+              <div>
+                <button
+                  className={styles['post-item-edit-button']}
+                  onClick={() => {
+                    setModalOpen(true);
+                    setEditablePostData({
+                      body: post.body,
+                      id: post.id,
+                      title: post.title
+                    })
+                  }}
+                >
+                  &#9998;
+                </button>
+              </div>
+            </div>
           </div>
-        );
-      })
-      .reverse()}
+        )}
+      )}
+
+      {modalOpen ? (
+        <EditPostModal
+          editablePostData={editablePostData}
+          setModalOpen={setModalOpen}
+        /> ) : null
+      }
     </div>
   )
 }
