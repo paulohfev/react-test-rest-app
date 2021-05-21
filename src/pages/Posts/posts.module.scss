@@ -1,0 +1,25 @@
+.post-item {
+  border: 1px solid #D3D3D3;
+  min-height: 165px;
+  padding: 0 10px;
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+
+  .post-item-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .post-item-content {
+      max-width: 500px;
+    }
+
+    .post-item-edit-button {
+      cursor: pointer;
+      font-size: 24px;
+      height: 50px;
+    }
+  }
+}
