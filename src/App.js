@@ -7,6 +7,7 @@ import {
 import Posts from './pages/Posts';
 import CreatePost from './pages/CreatePost';
 import Navbar from './components/Navbar';
+import './App.scss';
 
 const App = () => {
   return (
