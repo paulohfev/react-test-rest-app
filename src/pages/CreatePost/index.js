@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import redirectToHomePage from '../../utils/redirectHome';
 import pageStyles from '../pages.module.scss';
 import styles from './createPost.module.scss';
 
@@ -14,7 +15,8 @@ const CreatePost = () => {
       userId: 1
     })
     .then((response) => {
-      console.log(response.data);
+      alert(JSON.stringify(response.data));
+      redirectToHomePage();
     }, (error) => {
       console.log(error);
     });
