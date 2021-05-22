@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EditPostModal from '../../components/EditPostModal';
-import getPosts from '../../data/posts';
+import { getPosts, deletePost } from '../../data/posts';
 import pageStyles from '../pages.module.scss';
 import styles from './posts.module.scss';
 
@@ -18,6 +18,11 @@ const Posts = () => {
     fetchPosts();
   },[]);
 
+  const deleteSinglePost = async (postId) => {
+    const res = await deletePost(postId);
+    return res;
+  };
+
   return (
     <div className={pageStyles['page-container']}>
       <h1>List of Posts</h1>
@@ -32,7 +37,7 @@ const Posts = () => {
                 <p>{post.body}</p>
               </div>
 
-              <div>
+              <div className={styles['post-item-buttons']}>
                 <button
                   className={styles['post-item-edit-button']}
                   onClick={() => {
@@ -45,6 +50,13 @@ const Posts = () => {
                   }}
                 >
                   &#9998;
+                </button>
+
+                <button
+                  className={styles['post-item-delete-button']}
+                  onClick={() => deleteSinglePost(post.id)}
+                >
+                  &#x1F5D1;
                 </button>
               </div>
             </div>
