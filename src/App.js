@@ -12,7 +12,7 @@ import './App.scss';
 const App = () => {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/react-test-rest-app">
         <Navbar />
 
         <Switch>
@@ -20,7 +20,7 @@ const App = () => {
             <CreatePost />
           </Route>
 
-          <Route path='/'>
+          <Route exact path='/'>
             <Posts />
           </Route>
         </Switch>
