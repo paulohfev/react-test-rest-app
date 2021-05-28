@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import redirectToHomePage from '../../utils/redirectHome';
+import { editPost } from '../../api/posts';
 import styles from './editPostModal.module.scss';
 
 const EditPostModal = ({
@@ -11,16 +10,7 @@ const EditPostModal = ({
   const [bodyValue, setBodyValue] = useState(editablePostData.body);
 
   const onFormSubmit = () => {
-    axios.patch(`${process.env.REACT_APP_API_URL}/posts/${editablePostData.id}`, {
-      title: titleValue,
-      body: bodyValue,
-    })
-    .then((response) => {
-      alert(JSON.stringify(response.data));
-      redirectToHomePage();
-    },(error) => {
-      console.log(error);
-    });
+    editPost(editablePostData.id, titleValue, bodyValue);
   }
 
   return (

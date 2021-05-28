@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import redirectToHomePage from '../../utils/redirectHome';
+import { createPost } from '../../api/posts';
 import pageStyles from '../pages.module.scss';
 import styles from './createPost.module.scss';
 
@@ -9,17 +8,7 @@ const CreatePost = () => {
   const [bodyValue, setBodyValue] = useState('');
 
   const onFormSubmit = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/posts`, {
-      title: titleValue,
-      body: bodyValue,
-      userId: 1
-    })
-    .then((response) => {
-      alert(JSON.stringify(response.data));
-      redirectToHomePage();
-    }, (error) => {
-      console.log(error);
-    });
+    createPost(titleValue, bodyValue);
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EditPostModal from '../../components/EditPostModal';
-import { getPosts, deletePost } from '../../data/posts';
+import { getPosts, deletePost } from '../../api/posts';
 import pageStyles from '../pages.module.scss';
 import styles from './posts.module.scss';
 
