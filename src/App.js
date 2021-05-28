@@ -12,7 +12,7 @@ import './App.scss';
 const App = () => {
   return (
     <div className="App">
-      <Router basename="/react-test-rest-app">
+      <Router>
         <Navbar />
 
         <Switch>
